@@ -1,0 +1,163 @@
+[2022-10-15 11:03:12][info][main.cpp:200]:Create controller
+[2022-10-15 11:03:14][debug][trt_infer.cpp:31]:Deserialize required 821665 microseconds.
+[2022-10-15 11:03:14][debug][trt_infer.cpp:31]:Allocated persistent device memory of size 39633408
+[2022-10-15 11:03:14][debug][trt_infer.cpp:31]:Allocated activation device memory of size 374656512
+[2022-10-15 11:03:14][debug][trt_infer.cpp:31]:Assigning persistent memory blocks for various profiles
+[2022-10-15 11:03:14][info][trt_infer.cpp:176]:Infer 0x7f19dc012e40 detail
+[2022-10-15 11:03:14][info][trt_infer.cpp:177]:	Base device: [ID 0]<GeForce RTX 2080>[arch 7.5][GMEM 6.79 GB/7.79 GB]
+[2022-10-15 11:03:14][info][trt_infer.cpp:178]:	Max Batch Size: 10
+[2022-10-15 11:03:14][info][trt_infer.cpp:179]:	Inputs: 1
+[2022-10-15 11:03:14][info][trt_infer.cpp:183]:		0.images : shape {10 x 3 x 640 x 640}, Float32
+[2022-10-15 11:03:14][info][trt_infer.cpp:186]:	Outputs: 1
+[2022-10-15 11:03:14][info][trt_infer.cpp:190]:		0.output : shape {10 x 25200 x 85}, Float32
+[2022-10-15 11:03:14][info][main.cpp:209]:Create http server to: 0.0.0.0:8090
+[2022-10-15 11:03:14][info][main.cpp:217]:Add controller
+[2022-10-15 11:03:14][info][main.cpp:223]:Access url: http://0.0.0.0:8090
+[2022-10-15 11:03:14][info][main.cpp:236]:
+访问如下地址即可看到效果:
+1. http://0.0.0.0:8090/api/getCustom              使用自定义写出内容作为response
+2. http://0.0.0.0:8090/api/getReturn              使用函数返回值中的json作为response
+3. http://0.0.0.0:8090/api/getBinary              使用自定义写出二进制数据作为response
+4. http://0.0.0.0:8090/api/getFile                使用自定义写出文件路径作为response
+5. http://0.0.0.0:8090/api/putBase64Image         通过提交base64图像数据进行解码后储存
+6. http://0.0.0.0:8090/static/img.jpg             直接访问静态文件处理的controller,具体请看函数说明
+7. http://0.0.0.0:8090/api/detect                 访问web页面,vue开发的
+[2022-10-15 11:03:14][info][main.cpp:238]:按下Ctrl + C结束程序
+[2022-10-15 11:03:20][info][http_server.cpp:955]:Found match: /api/detect/ [GET] -> /api/detect/ [*]
+[2022-10-15 11:03:24][info][http_server.cpp:934]:Found match: /static/js/vendor.cb2d78080bd4fb578058.js/ [GET] -> [/]
+[2022-10-15 11:03:30][info][http_server.cpp:934]:Found match: /api/detectBase64Image/ [POST] -> [/]
+[2022-10-15 11:03:37][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 11:03:37][info][ilogger.cpp:973]:Loop over.
+[2022-10-15 11:03:37][info][http_server.cpp:1101]:Shutdown http server.
+[2022-10-15 11:03:38][info][yolo.cpp:320]:Engine destroy.
+[2022-10-15 11:16:53][info][main.cpp:200]:Create controller
+[2022-10-15 11:16:54][debug][trt_infer.cpp:31]:Deserialize required 828885 microseconds.
+[2022-10-15 11:16:54][debug][trt_infer.cpp:31]:Allocated persistent device memory of size 39633408
+[2022-10-15 11:16:54][debug][trt_infer.cpp:31]:Allocated activation device memory of size 374656512
+[2022-10-15 11:16:54][debug][trt_infer.cpp:31]:Assigning persistent memory blocks for various profiles
+[2022-10-15 11:16:54][info][trt_infer.cpp:176]:Infer 0x7f4c5c012e40 detail
+[2022-10-15 11:16:54][info][trt_infer.cpp:177]:	Base device: [ID 0]<GeForce RTX 2080>[arch 7.5][GMEM 6.79 GB/7.79 GB]
+[2022-10-15 11:16:54][info][trt_infer.cpp:178]:	Max Batch Size: 10
+[2022-10-15 11:16:54][info][trt_infer.cpp:179]:	Inputs: 1
+[2022-10-15 11:16:54][info][trt_infer.cpp:183]:		0.images : shape {10 x 3 x 640 x 640}, Float32
+[2022-10-15 11:16:54][info][trt_infer.cpp:186]:	Outputs: 1
+[2022-10-15 11:16:54][info][trt_infer.cpp:190]:		0.output : shape {10 x 25200 x 85}, Float32
+[2022-10-15 11:16:54][info][main.cpp:209]:Create http server to: 0.0.0.0:8090
+[2022-10-15 11:16:54][info][main.cpp:217]:Add controller
+[2022-10-15 11:16:54][info][main.cpp:223]:Access url: http://0.0.0.0:8090
+[2022-10-15 11:16:54][info][main.cpp:236]:
+访问如下地址即可看到效果:
+1. http://0.0.0.0:8090/api/getCustom              使用自定义写出内容作为response
+2. http://0.0.0.0:8090/api/getReturn              使用函数返回值中的json作为response
+3. http://0.0.0.0:8090/api/getBinary              使用自定义写出二进制数据作为response
+4. http://0.0.0.0:8090/api/getFile                使用自定义写出文件路径作为response
+5. http://0.0.0.0:8090/api/putBase64Image         通过提交base64图像数据进行解码后储存
+6. http://0.0.0.0:8090/static/img.jpg             直接访问静态文件处理的controller,具体请看函数说明
+7. http://0.0.0.0:8090/api/detect                 访问web页面,vue开发的
+[2022-10-15 11:16:54][info][main.cpp:238]:按下Ctrl + C结束程序
+[2022-10-15 11:16:59][info][http_server.cpp:955]:Found match: /api/detect/ [GET] -> /api/detect/ [*]
+[2022-10-15 11:17:14][info][http_server.cpp:934]:Found match: /api/detectBase64Image/ [POST] -> [/]
+[2022-10-15 11:17:18][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 11:17:18][info][ilogger.cpp:973]:Loop over.
+[2022-10-15 11:17:18][info][http_server.cpp:1101]:Shutdown http server.
+[2022-10-15 11:17:18][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 11:17:19][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 11:17:19][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 11:17:19][info][yolo.cpp:320]:Engine destroy.
+[2022-10-15 11:17:19][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 13:11:55][info][main.cpp:200]:Create controller
+[2022-10-15 13:11:56][debug][trt_infer.cpp:31]:Deserialize required 821188 microseconds.
+[2022-10-15 13:11:56][debug][trt_infer.cpp:31]:Allocated persistent device memory of size 39633408
+[2022-10-15 13:11:56][debug][trt_infer.cpp:31]:Allocated activation device memory of size 374656512
+[2022-10-15 13:11:56][debug][trt_infer.cpp:31]:Assigning persistent memory blocks for various profiles
+[2022-10-15 13:11:56][info][trt_infer.cpp:176]:Infer 0x7fb24c012e40 detail
+[2022-10-15 13:11:56][info][trt_infer.cpp:177]:	Base device: [ID 0]<GeForce RTX 2080>[arch 7.5][GMEM 6.79 GB/7.79 GB]
+[2022-10-15 13:11:56][info][trt_infer.cpp:178]:	Max Batch Size: 10
+[2022-10-15 13:11:56][info][trt_infer.cpp:179]:	Inputs: 1
+[2022-10-15 13:11:56][info][trt_infer.cpp:183]:		0.images : shape {10 x 3 x 640 x 640}, Float32
+[2022-10-15 13:11:56][info][trt_infer.cpp:186]:	Outputs: 1
+[2022-10-15 13:11:56][info][trt_infer.cpp:190]:		0.output : shape {10 x 25200 x 85}, Float32
+[2022-10-15 13:11:56][info][main.cpp:209]:Create http server to: 0.0.0.0:8090
+[2022-10-15 13:11:56][info][main.cpp:217]:Add controller
+[2022-10-15 13:11:56][info][main.cpp:223]:Access url: http://0.0.0.0:8090
+[2022-10-15 13:11:56][info][main.cpp:236]:
+访问如下地址即可看到效果:
+1. http://0.0.0.0:8090/api/getCustom              使用自定义写出内容作为response
+2. http://0.0.0.0:8090/api/getReturn              使用函数返回值中的json作为response
+3. http://0.0.0.0:8090/api/getBinary              使用自定义写出二进制数据作为response
+4. http://0.0.0.0:8090/api/getFile                使用自定义写出文件路径作为response
+5. http://0.0.0.0:8090/api/putBase64Image         通过提交base64图像数据进行解码后储存
+6. http://0.0.0.0:8090/static/img.jpg             直接访问静态文件处理的controller,具体请看函数说明
+7. http://0.0.0.0:8090/api/detect                 访问web页面,vue开发的
+[2022-10-15 13:11:56][info][main.cpp:238]:按下Ctrl + C结束程序
+[2022-10-15 13:12:01][info][http_server.cpp:955]:Found match: /api/detect/ [GET] -> /api/detect/ [*]
+[2022-10-15 13:12:10][info][http_server.cpp:934]:Found match: /api/detectBase64Image/ [POST] -> [/]
+[2022-10-15 13:12:16][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 13:12:16][info][ilogger.cpp:973]:Loop over.
+[2022-10-15 13:12:16][info][http_server.cpp:1101]:Shutdown http server.
+[2022-10-15 13:12:16][info][yolo.cpp:320]:Engine destroy.
+[2022-10-15 13:18:35][info][main.cpp:200]:Create controller
+[2022-10-15 13:18:36][debug][trt_infer.cpp:31]:Deserialize required 819438 microseconds.
+[2022-10-15 13:18:36][debug][trt_infer.cpp:31]:Allocated persistent device memory of size 39633408
+[2022-10-15 13:18:36][debug][trt_infer.cpp:31]:Allocated activation device memory of size 374656512
+[2022-10-15 13:18:36][debug][trt_infer.cpp:31]:Assigning persistent memory blocks for various profiles
+[2022-10-15 13:18:36][info][trt_infer.cpp:176]:Infer 0x7efc88012e40 detail
+[2022-10-15 13:18:36][info][trt_infer.cpp:177]:	Base device: [ID 0]<GeForce RTX 2080>[arch 7.5][GMEM 6.79 GB/7.79 GB]
+[2022-10-15 13:18:36][info][trt_infer.cpp:178]:	Max Batch Size: 10
+[2022-10-15 13:18:36][info][trt_infer.cpp:179]:	Inputs: 1
+[2022-10-15 13:18:36][info][trt_infer.cpp:183]:		0.images : shape {10 x 3 x 640 x 640}, Float32
+[2022-10-15 13:18:36][info][trt_infer.cpp:186]:	Outputs: 1
+[2022-10-15 13:18:36][info][trt_infer.cpp:190]:		0.output : shape {10 x 25200 x 85}, Float32
+[2022-10-15 13:18:36][info][main.cpp:209]:Create http server to: 0.0.0.0:8090
+[2022-10-15 13:18:36][info][main.cpp:217]:Add controller
+[2022-10-15 13:18:36][info][main.cpp:223]:Access url: http://0.0.0.0:8090
+[2022-10-15 13:18:36][info][main.cpp:236]:
+访问如下地址即可看到效果:
+1. http://0.0.0.0:8090/api/getCustom              使用自定义写出内容作为response
+2. http://0.0.0.0:8090/api/getReturn              使用函数返回值中的json作为response
+3. http://0.0.0.0:8090/api/getBinary              使用自定义写出二进制数据作为response
+4. http://0.0.0.0:8090/api/getFile                使用自定义写出文件路径作为response
+5. http://0.0.0.0:8090/api/putBase64Image         通过提交base64图像数据进行解码后储存
+6. http://0.0.0.0:8090/static/img.jpg             直接访问静态文件处理的controller,具体请看函数说明
+7. http://0.0.0.0:8090/api/detect                 访问web页面,vue开发的
+[2022-10-15 13:18:36][info][main.cpp:238]:按下Ctrl + C结束程序
+[2022-10-15 13:18:47][info][http_server.cpp:934]:Found match: /api/detectBase64Image/ [POST] -> [/api/]
+[2022-10-15 13:18:51][info][http_server.cpp:955]:Found match: /api/detect/ [GET] -> /api/detect/ [*]
+[2022-10-15 13:18:58][info][http_server.cpp:955]:Found match: /api/ [GET] -> /api/ [*]
+[2022-10-15 13:18:59][info][http_server.cpp:955]:Found match: /api/ [GET] -> /api/ [*]
+[2022-10-15 13:19:00][info][http_server.cpp:955]:Found match: /api/ [GET] -> /api/ [*]
+[2022-10-15 13:19:04][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 13:19:04][info][ilogger.cpp:973]:Loop over.
+[2022-10-15 13:19:04][info][http_server.cpp:1101]:Shutdown http server.
+[2022-10-15 13:19:05][info][yolo.cpp:320]:Engine destroy.
+[2022-10-15 13:19:38][info][main.cpp:200]:Create controller
+[2022-10-15 13:19:39][debug][trt_infer.cpp:31]:Deserialize required 818999 microseconds.
+[2022-10-15 13:19:39][debug][trt_infer.cpp:31]:Allocated persistent device memory of size 39633408
+[2022-10-15 13:19:39][debug][trt_infer.cpp:31]:Allocated activation device memory of size 374656512
+[2022-10-15 13:19:39][debug][trt_infer.cpp:31]:Assigning persistent memory blocks for various profiles
+[2022-10-15 13:19:39][info][trt_infer.cpp:176]:Infer 0x7fba54012e40 detail
+[2022-10-15 13:19:39][info][trt_infer.cpp:177]:	Base device: [ID 0]<GeForce RTX 2080>[arch 7.5][GMEM 6.79 GB/7.79 GB]
+[2022-10-15 13:19:39][info][trt_infer.cpp:178]:	Max Batch Size: 10
+[2022-10-15 13:19:39][info][trt_infer.cpp:179]:	Inputs: 1
+[2022-10-15 13:19:39][info][trt_infer.cpp:183]:		0.images : shape {10 x 3 x 640 x 640}, Float32
+[2022-10-15 13:19:39][info][trt_infer.cpp:186]:	Outputs: 1
+[2022-10-15 13:19:39][info][trt_infer.cpp:190]:		0.output : shape {10 x 25200 x 85}, Float32
+[2022-10-15 13:19:39][info][main.cpp:209]:Create http server to: 0.0.0.0:8090
+[2022-10-15 13:19:39][info][main.cpp:217]:Add controller
+[2022-10-15 13:19:39][info][main.cpp:223]:Access url: http://0.0.0.0:8090
+[2022-10-15 13:19:39][info][main.cpp:236]:
+访问如下地址即可看到效果:
+1. http://0.0.0.0:8090/api/getCustom              使用自定义写出内容作为response
+2. http://0.0.0.0:8090/api/getReturn              使用函数返回值中的json作为response
+3. http://0.0.0.0:8090/api/getBinary              使用自定义写出二进制数据作为response
+4. http://0.0.0.0:8090/api/getFile                使用自定义写出文件路径作为response
+5. http://0.0.0.0:8090/api/putBase64Image         通过提交base64图像数据进行解码后储存
+6. http://0.0.0.0:8090/static/img.jpg             直接访问静态文件处理的controller,具体请看函数说明
+7. http://0.0.0.0:8090/api/detect                 访问web页面,vue开发的
+[2022-10-15 13:19:39][info][main.cpp:238]:按下Ctrl + C结束程序
+[2022-10-15 13:19:43][info][http_server.cpp:955]:Found match: /api/detect/ [GET] -> /api/detect/ [*]
+[2022-10-15 13:19:51][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 13:19:51][info][ilogger.cpp:973]:Loop over.
+[2022-10-15 13:19:51][info][http_server.cpp:1101]:Shutdown http server.
+[2022-10-15 13:19:51][info][ilogger.cpp:962]:Capture interrupt signal.
+[2022-10-15 13:19:51][info][yolo.cpp:320]:Engine destroy.
