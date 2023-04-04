@@ -1,0 +1,9 @@
+build/
+bin/
+onnx/zkView.onnx
+web/
+yolov5/InstrumentDataset
+yolov5/runs
+yolov5/detect.sh
+yolov5/export.sh
+yolov5/train.sh
