@@ -4,14 +4,14 @@
  * @Author: zwy
  * @Date: 2023-04-03 16:06:43
  * @LastEditors: zwy
- * @LastEditTime: 2023-04-04 15:25:57
+ * @LastEditTime: 2023-04-04 15:28:07
 -->
 # 这是一个针对zkview平台上嵌入机器视觉算法的框架
 
 
 ## 简介
 
-![main](https://blog-1300216920.cos.ap-nanjing.myqcloud.com/main.gif)
+![main](doc/img/main.gif)
 
 - [zkview](https://zkview.com/)：专业的工业互联网WEB组态软件
 
