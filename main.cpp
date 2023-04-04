@@ -151,7 +151,7 @@ void YoloInference(std::string in_video_url)
 
             // 队列满，等待消费者消费
             cv_producer.wait(lock, []()
-                             { bool is_full = img_queue.size() < 30;
+                             { bool is_full = img_queue.size() < 3000;
             if (!is_full) {
                 INFO("Producer is waiting...");
             }
