@@ -85,6 +85,7 @@
         "regex": "cpp",
         "cfenv": "cpp",
         "typeindex": "cpp",
-        "__mutex_base": "cpp"
+        "__mutex_base": "cpp",
+        "*.ipp": "cpp"
     }
 }

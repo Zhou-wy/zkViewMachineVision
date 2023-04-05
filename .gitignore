@@ -1,6 +1,6 @@
 build/
 bin/
-onnx/zkView.onnx
+onnx/
 web/
 yolov5/InstrumentDataset
 yolov5/runs

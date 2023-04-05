@@ -28,8 +28,8 @@ extern "C"
 #include <libswscale/swscale.h>
 }
 
-const std::string engine_file = "../workspace/yolov5s.engine";
-const std::string onnx_file = "../workspace/yolov5s.onnx";
+const std::string engine_file = "../onnx/zkView.engine";
+const std::string onnx_file = "../onnx/zkView.onnx";
 
 // 用于同步的互斥锁和条件变量
 std::mutex mtx;
@@ -37,20 +37,22 @@ std::condition_variable cv_producer, cv_consumer;
 // 图像队列
 std::queue<cv::Mat> img_queue;
 
-static const char *cocolabels[] = {
-    "person", "bicycle", "car", "motorcycle", "airplane",
-    "bus", "train", "truck", "boat", "traffic light", "fire hydrant",
-    "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse",
-    "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack",
-    "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis",
-    "snowboard", "sports ball", "kite", "baseball bat", "baseball glove",
-    "skateboard", "surfboard", "tennis racket", "bottle", "wine glass",
-    "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich",
-    "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake",
-    "chair", "couch", "potted plant", "bed", "dining table", "toilet", "tv",
-    "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave",
-    "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase",
-    "scissors", "teddy bear", "hair drier", "toothbrush"};
+// static const char *cocolabels[] = {
+//     "person", "bicycle", "car", "motorcycle", "airplane",
+//     "bus", "train", "truck", "boat", "traffic light", "fire hydrant",
+//     "stop sign", "parking meter", "bench", "bird", "cat", "dog", "horse",
+//     "sheep", "cow", "elephant", "bear", "zebra", "giraffe", "backpack",
+//     "umbrella", "handbag", "tie", "suitcase", "frisbee", "skis",
+//     "snowboard", "sports ball", "kite", "baseball bat", "baseball glove",
+//     "skateboard", "surfboard", "tennis racket", "bottle", "wine glass",
+//     "cup", "fork", "knife", "spoon", "bowl", "banana", "apple", "sandwich",
+//     "orange", "broccoli", "carrot", "hot dog", "pizza", "donut", "cake",
+//     "chair", "couch", "potted plant", "bed", "dining table", "toilet", "tv",
+//     "laptop", "mouse", "remote", "keyboard", "cell phone", "microwave",
+//     "oven", "toaster", "sink", "refrigerator", "book", "clock", "vase",
+//     "scissors", "teddy bear", "hair drier", "toothbrush"};
+
+static const char *cocolabels[] = {"PointerInstrument", "IndicatorLight", "LiquidCrystalInstrument"};
 
 class InferInstance
 {
@@ -125,7 +127,7 @@ void YoloInference(std::string in_video_url)
         try
         {
             yolo->inference(image, boxarray);
-            auto t = cv::getTickCount();
+            // auto t = cv::getTickCount();
             for (auto &box : boxarray)
             {
 
@@ -139,12 +141,12 @@ void YoloInference(std::string in_video_url)
                 cv::rectangle(image, cv::Point(box.left - 3, box.top - 33), cv::Point(box.left + text_width, box.top), color, -1);
                 cv::putText(image, caption, cv::Point(box.left, box.top - 5), 0, 1, cv::Scalar::all(0), 2, 16);
             }
-            auto d = cv::getTickCount();
-            // double spendTime = (d - t) * 1000 / cv::getTickFrequency();
-            double fps = cv::getTickFrequency() / (d - t);
+            // auto d = cv::getTickCount();
+            // // double spendTime = (d - t) * 1000 / cv::getTickFrequency();
+            // double fps = cv::getTickFrequency() / (d - t);
 
-            auto fpsString = cv::format("%s %.2f", "FPS:", fps);
-            cv::putText(image, fpsString, cv::Point(5, 20), 0, 1, cv::Scalar::all(0), 2, 16); // 字体颜色
+            // auto fpsString = cv::format("%s %.2f", "FPS:", fps);
+            // cv::putText(image, fpsString, cv::Point(5, 20), 0, 1, cv::Scalar::all(0), 2, 16); // 字体颜色
             INFOD("yolo Inference done!");
             // 加锁队列
             std::unique_lock<std::mutex> lock(mtx);
@@ -238,7 +240,7 @@ void video2flv(double width, double height, int fps, int bitrate, std::string co
             cv_producer.notify_one();
 
             // 消费图像consumeImage(image);
-            // cv::resize(image, image, cv::Size(width, height));
+            cv::resize(image, image, cv::Size(width, height));
             const int stride[] = {static_cast<int>(image.step[0])};
             sws_scale(swsctx, &image.data, stride, 0, image.rows, frame->data, frame->linesize);
             frame->pts += av_rescale_q(1, out_codec_ctx->time_base, out_stream->time_base);
@@ -260,12 +262,10 @@ void video2flv(double width, double height, int fps, int bitrate, std::string co
 int main(int argc, char const *argv[])
 {
     std::string in_url = "rtsp://admin:admin123@192.168.0.212:554/cam/realmonitor?channel=1&subtype=0";
-    int fps = 30, width = 1920, height = 1080, bitrate = 300000;
+    int fps = 30, width = 1920, height = 1080, bitrate = 3000000;
     std::string h264profile = "high444";
     std::string out_url = "rtmp://192.168.0.113:1935/myapp/mystream";
     iLogger::set_log_level(iLogger::LogLevel::Info);
-
-
 
     // 创建生产者和消费者线程
     std::thread producer(YoloInference, in_url);

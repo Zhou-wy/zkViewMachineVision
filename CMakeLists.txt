@@ -61,10 +61,6 @@ add_executable(ZkViewYolo ${CMAKE_SOURCE_DIR}/main.cpp)
 # 链接动态链接库
 target_link_libraries(ZkViewYolo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS} ${FFMEPG_LIB})
 
-add_executable(test_json ${CMAKE_SOURCE_DIR}/test/test_json.cpp)
-# 链接动态链接库
-target_link_libraries(test_json common)
-
 if(BUILD_TESTING)
     enable_testing()
     add_executable(test_yolo_http ${CMAKE_SOURCE_DIR}/test/test_yolo_http.cpp)
@@ -78,4 +74,12 @@ if(BUILD_TESTING)
     add_executable(test_rtsp2rtmp ${CMAKE_SOURCE_DIR}/test/test_ffmpeg_rtsp2rtmp.cpp)
     # 链接动态链接库
     target_link_libraries(test_rtsp2rtmp ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+    
+    add_executable(test_json ${CMAKE_SOURCE_DIR}/test/test_json.cpp)
+    # 链接动态链接库
+    target_link_libraries(test_json common)
+
+    add_executable(test_zk_Instrument ${CMAKE_SOURCE_DIR}/test/test_yolo_Instrument.cpp)
+    # 链接动态链接库
+    target_link_libraries(test_zk_Instrument ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS} ${FFMEPG_LIB})
 endif()
