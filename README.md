@@ -4,7 +4,7 @@
  * @Author: zwy
  * @Date: 2023-04-03 16:06:43
  * @LastEditors: zwy
- * @LastEditTime: 2023-04-06 10:35:52
+ * @LastEditTime: 2023-04-06 10:40:16
 -->
 # 这是一个针对zkview平台上嵌入机器视觉算法的框架
 
@@ -276,6 +276,7 @@ make -j8
 
 ![](doc/img/3.png)
 
+![](doc/img/4.png)
 ## 四、搭配zkview平台，完成前端展示
 
 具体使用可见 [zkview 教程](http://zkview.com/docs/start/#_1-%E8%BE%85%E5%8A%A9%E5%B7%A5%E5%85%B7)
@@ -300,8 +301,6 @@ http://192.168.0.113/live?port=1935&app=myapp&stream=mystream
 
 
 简单点来说既是，在画布中拖入`FLV格式`组件即可:
-
-![](doc/img/4.png)
 
 ![](doc/img/5.png)
 
