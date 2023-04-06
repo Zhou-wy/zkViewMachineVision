@@ -9,9 +9,10 @@ set(CMAKE_VERBOSE_MAKEFILEON ON)
 
 find_package(OpenCV)
 enable_language(CUDA)
-
-set(CMAKE_CUDA_COMPILER "/usr/local/cuda/bin/nvcc")
 set(CMAKE_BUILD_TYPE Debug)
+
+
+set(CMAKE_CUDA_COMPILER /usr/local/cuda/bin/nvcc)
 set(CUDA_HOME /usr/local/cuda)
 set(TRT_HOME /home/zwy/TensorRT-7.2.3.4)
 
