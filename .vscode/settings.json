@@ -86,6 +86,7 @@
         "cfenv": "cpp",
         "typeindex": "cpp",
         "__mutex_base": "cpp",
-        "*.ipp": "cpp"
+        "*.ipp": "cpp",
+        "__string": "cpp"
     }
 }

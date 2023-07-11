@@ -764,7 +764,7 @@ public:
 			}
 		}
 		// match by ccutil::gmtime
-		// INFO("Write file: %s", merge_path.c_str());
+		INFO("Write file: %s", merge_path.c_str());
 		session->response.write_file(merge_path);
 	}
 

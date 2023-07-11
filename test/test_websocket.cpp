@@ -4,46 +4,61 @@
  * @Author: zwy
  * @Date: 2023-04-01 17:31:27
  * @LastEditors: zwy
- * @LastEditTime: 2023-04-02 14:21:42
+ * @LastEditTime: 2023-04-12 16:30:21
  */
 #include <thread>
-#include <chrono>
+
 #include <map>
 #include <future>
+#include <chrono>
 
 #include "../src/app_WebSocket/zk_webSocket.hpp"
 #include "../src/TrtLib/common/ilogger.hpp"
+#include "../src/TrtLib/common/json.hpp"
+
+bool checkHeart(zwy::zkWebSocketServer &server)
+{
+  while (server.wsIsRunning())
+  {
+    auto now = std::chrono::system_clock::now();
+    auto lastHeartbeatTime = std::chrono::time_point_cast<std::chrono::milliseconds>(server.getWsTime());
+    auto currentTime = std::chrono::time_point_cast<std::chrono::milliseconds>(now);
+    auto elapsedTime = currentTime - lastHeartbeatTime;
+    // 以下为间隔15S
+    if (elapsedTime.count() > (15 * 1000))
+    {
+      INFOW("connection timed out");
+      return false;
+    }
+  }
+}
 
 int main(int argc, char const *argv[])
 {
   INFO("=======test begin======");
   iLogger::set_log_level(iLogger::LogLevel::Debug);
-  // zwy::zkWebSocketServer server("localhost", 8765);
-  // server.setOnMessageHandler([](std::shared_ptr<WsServer::Connection> connection, std::shared_ptr<WsServer::Message> message)
-  //                            { std::cout << "Received message: " << message->string() << std::endl; });
   try
   {
-    zwy::zkWebSocketServer server("localhost", 8765);
-    // server.setOnMessageHandler([](std::shared_ptr<WsServer::Connection> connection, std::shared_ptr<WsServer::Message> message)
-    //                            { std::cout << "Received message: " << message->string() << std::endl; });
-    server.start("zkSource");
-    std::cout << "WebSocket server is running." << std::endl;
-    std::string input;
-    do
-    {
-      std::cout << "Enter a message to send (or 'quit' to exit): ";
-      std::getline(std::cin, input);
-      if (input != "quit")
-      {
-        server.sendMessage(input);
-      }
-    } while (input != "quit");
-    server.stop();
-    std::cout << "WebSocket server is stopped." << std::endl;
+    zwy::zkWebSocketServer server("192.168.0.113", 8765);
+
+    server.startUp("zkSource");
+
+    INFO("WebSocket server is running.");
+
+    std::thread th([&server]()
+                   {
+        if(!checkHeart(server)) 
+        {
+          
+        } 
+      });
+
+    // detach the thread so that it can continue running in the background
+    th.join();
   }
   catch (const std::exception &e)
   {
-    std::cerr << "Exception caught: " << e.what() << std::endl;
+    INFOW("Exception caught: %s", e.what());
     return 1;
   }
   return 0;

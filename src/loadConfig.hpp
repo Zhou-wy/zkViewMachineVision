@@ -20,7 +20,7 @@ bool LoadConfig()
 {
     // 读取JSON文件
     Json::Value root;
-    std::ifstream config_file("config.json");
+    std::ifstream config_file("../workspace/config.json");
     if (config_file.fail())
     {
         std::cerr << "Failed to open config file." << std::endl;

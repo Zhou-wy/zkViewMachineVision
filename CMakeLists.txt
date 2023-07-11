@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(TrtServer)
+project(TrtServer LANGUAGES CUDA CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 
@@ -52,21 +52,30 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_WebSocket)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_yolo)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_http)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/VideoPusher)
+add_subdirectory(${CMAKE_SOURCE_DIR}/src/yolov8)
 
 set(FFMEPG_LIB ${FFMEPG_LIB} avcodec  avdevice  avfilter  avformat  avutil  postproc  swresample  swscale)
-set(EXTRA_LIBS ${EXTRA_LIBS}  WebSocket http yolo TrtInfer TrtBuilder common RtspToFlv)
+set(EXTRA_LIBS ${EXTRA_LIBS}  yolov8 WebSocket http yolo TrtInfer TrtBuilder common RtspToFlv)
 
 link_directories(${CUDA_LIB_DIR} ${TRT_LIB_DIR}) 
 
-add_executable(ZkViewYolo ${CMAKE_SOURCE_DIR}/main.cpp)
+# add_executable(ZkViewYolo ${CMAKE_SOURCE_DIR}/main.cpp)
+# # 链接动态链接库
+# target_link_libraries(ZkViewYolo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS} ${FFMEPG_LIB})
+
+add_executable(test_yolo_seg_http ${CMAKE_SOURCE_DIR}/test/test_yolov8_seg.cpp)
 # 链接动态链接库
-target_link_libraries(ZkViewYolo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS} ${FFMEPG_LIB})
+target_link_libraries(test_yolo_seg_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
 
 if(BUILD_TESTING)
     enable_testing()
     add_executable(test_yolo_http ${CMAKE_SOURCE_DIR}/test/test_yolo_http.cpp)
     # 链接动态链接库
     target_link_libraries(test_yolo_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+
+    add_executable(test_websocket ${CMAKE_SOURCE_DIR}/test/test_websocket.cpp)
+    # 链接动态链接库
+    target_link_libraries(test_websocket ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
 
     add_executable(test_websocket ${CMAKE_SOURCE_DIR}/test/test_websocket.cpp)
     # 链接动态链接库

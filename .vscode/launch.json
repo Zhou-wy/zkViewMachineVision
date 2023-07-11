@@ -5,7 +5,7 @@
             "name": "C++Debug",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/bin/test_zk_Instrument",
+            "program": "${workspaceFolder}/bin/test_yolo_seg_http",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}/build",
