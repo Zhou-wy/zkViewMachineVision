@@ -7,3 +7,5 @@ yolov5/runs
 yolov5/detect.sh
 yolov5/export.sh
 yolov5/train.sh
+*.onnx
+*.engine
