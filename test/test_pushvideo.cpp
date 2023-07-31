@@ -15,12 +15,12 @@
 #include <unistd.h>
 #include <opencv2/opencv.hpp>
 
-#include "src/TrtLib/common/ilogger.hpp"
-#include "src/TrtLib/common/json.hpp"
-#include "src/TrtLib/builder/trt_builder.hpp"
-#include "src/app_yolo/yolo.hpp"
-#include "src/VideoPusher/rtsp2flv.hpp"
-#include "src/loadConfig.hpp"
+#include "../src/TrtLib/common/ilogger.hpp"
+#include "../src/TrtLib/common/json.hpp"
+#include "../src/TrtLib/builder/trt_builder.hpp"
+#include "../src/app_yolo/yolo.hpp"
+#include "../src/VideoPusher/rtsp2flv.hpp"
+#include "../src/loadConfig.hpp"
 
 extern "C"
 {
@@ -30,8 +30,8 @@ extern "C"
 #include <libswscale/swscale.h>
 }
 
-const std::string engine_file = "../onnx/zkView.engine";
-const std::string onnx_file = "../onnx/zkView.onnx";
+const std::string engine_file = "/home/zwy/CWorkspace/zkView_yolo/onnx/zkView.engine";
+const std::string onnx_file = "/home/zwy/CWorkspace/zkView_yolo/onnx/zkView.onnx";
 
 // 用于同步的互斥锁和条件变量
 std::mutex mtx;
@@ -263,7 +263,7 @@ void video2flv(double width, double height, int fps, int bitrate, std::string co
 
 int main(int argc, char const *argv[])
 {
-    std::string in_url = "rtsp://admin:admin123@192.168.0.212:554/cam/realmonitor?channel=1&subtype=0";
+    std::string in_url = "rtsp://admin:pf7trm2pgq@192.168.0.147:554/cam/realmonitor?channel=1&subtype=0";
     int fps = 30, width = 1920, height = 1080, bitrate = 3000000;
     std::string h264profile = "high444";
     std::string out_url = "rtmp://192.168.0.113:1935/myapp/mystream";

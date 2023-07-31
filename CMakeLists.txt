@@ -63,10 +63,18 @@ link_directories(${CUDA_LIB_DIR} ${TRT_LIB_DIR})
 # # 链接动态链接库
 # target_link_libraries(ZkViewYolo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS} ${FFMEPG_LIB})
 
-add_executable(test_yolo_seg_http ${CMAKE_SOURCE_DIR}/test/test_yolov8_seg.cpp)
-# 链接动态链接库
-target_link_libraries(test_yolo_seg_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+# add_executable(test_yolo_seg_http ${CMAKE_SOURCE_DIR}/test/test_yolov8_seg.cpp)
+# # 链接动态链接库
+# target_link_libraries(test_yolo_seg_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
 
+add_executable(test_yolo_http ${CMAKE_SOURCE_DIR}/test/test_yolo_http.cpp)
+# 链接动态链接库
+target_link_libraries(test_yolo_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+
+add_executable(test_pushvideo ${CMAKE_SOURCE_DIR}/test/test_pushvideo.cpp)
+# 链接动态链接库
+target_link_libraries(test_pushvideo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+    
 if(BUILD_TESTING)
     enable_testing()
     add_executable(test_yolo_http ${CMAKE_SOURCE_DIR}/test/test_yolo_http.cpp)
