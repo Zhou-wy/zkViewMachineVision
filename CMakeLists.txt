@@ -52,10 +52,9 @@ add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_WebSocket)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_yolo)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/app_http)
 add_subdirectory(${CMAKE_SOURCE_DIR}/src/VideoPusher)
-add_subdirectory(${CMAKE_SOURCE_DIR}/src/yolov8)
 
 set(FFMEPG_LIB ${FFMEPG_LIB} avcodec  avdevice  avfilter  avformat  avutil  postproc  swresample  swscale)
-set(EXTRA_LIBS ${EXTRA_LIBS}  yolov8 WebSocket http yolo TrtInfer TrtBuilder common RtspToFlv)
+set(EXTRA_LIBS ${EXTRA_LIBS} WebSocket http yolo TrtInfer TrtBuilder common RtspToFlv)
 
 link_directories(${CUDA_LIB_DIR} ${TRT_LIB_DIR}) 
 
