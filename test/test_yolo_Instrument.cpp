@@ -3,11 +3,12 @@
 #include "../src/app_yolo/yolo.hpp"
 #include <numeric>
 #include <cmath>
+#include "common.hpp"
 
-const std::string engine_file = "../onnx/zkView.engine";
-const std::string onnx_file = "../onnx/zkView.onnx";
+const std::string engine_file = "../workspace/yolov5s.engine";
+const std::string onnx_file = "../workspace/yolov5s.onnx";
 #define RANGE 1.6
-static const char *label_string[] = {"PointerInstrument", "IndicatorLight", "LiquidCrystalInstrument"};
+//static const char *label_string[] = {"PointerInstrument", "IndicatorLight", "LiquidCrystalInstrument"};
 
 class InferInstance
 {
@@ -281,7 +282,7 @@ void getData(std::map<std::string, cv::Mat> class_image)
 
 int main(int argc, char const *argv[])
 {
-    cv::Mat image = cv::imread("../workspace/test_instrument/77.JPG");
+    cv::Mat image = cv::imread("../workspace/car.jpg");
     cv::Mat image_clone = image.clone();
     std::map<std::string, cv::Mat> crop_result; // key: 类别 -> value: 识别结果框
     std::shared_ptr<InferInstance> yolo;
@@ -296,23 +297,23 @@ int main(int argc, char const *argv[])
     for (auto &box : boxarray)
     {
 
-        cv::Scalar color(0, 255, 0);
-        cv::rectangle(image, cv::Point(box.left, box.top), cv::Point(box.right, box.bottom), color, 3);
+        //    cv::Scalar color(0, 255, 0);
+        cv::rectangle(image, cv::Point(box.left, box.top), cv::Point(box.right, box.bottom), colors[box.class_label], 3);
 
-        auto name = label_string[box.class_label];
+        auto name = cocolabels[box.class_label];
         auto caption = cv::format("%s %.2f", name, box.confidence);
         int text_width = cv::getTextSize(caption, 0, 1, 2, nullptr).width + 10;
 
         // 可视化结果
-        cv::rectangle(image, cv::Point(box.left - 3, box.top - 33), cv::Point(box.left + text_width, box.top), color, -1);
+        cv::rectangle(image, cv::Point(box.left - 3, box.top - 33), cv::Point(box.left + text_width, box.top), colors[box.class_label], -1);
         cv::putText(image, caption, cv::Point(box.left, box.top - 5), 0, 1, cv::Scalar::all(0), 2, 16);
 
         // 取出识别结果
         cv::Rect roi(box.left, box.top, box.right - box.left, box.bottom - box.top);
         cv::Mat crop = image_clone(roi);
         crop_result.insert(std::make_pair(std::string(name), crop));
-        getData(crop_result);
+        //getData(crop_result);
     }
-    cv::imwrite("../workspace/test_instrument/77_result.JPG", image);
+    cv::imwrite("../workspace/result.JPG", image);
     return 0;
 }

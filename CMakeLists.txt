@@ -70,9 +70,9 @@ add_executable(test_yolo_http ${CMAKE_SOURCE_DIR}/test/test_yolo_http.cpp)
 # 链接动态链接库
 target_link_libraries(test_yolo_http ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
 
-add_executable(test_pushvideo ${CMAKE_SOURCE_DIR}/test/test_pushvideo.cpp)
+add_executable(test_yolo ${CMAKE_SOURCE_DIR}/test/test_yolo_Instrument.cpp)
 # 链接动态链接库
-target_link_libraries(test_pushvideo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
+target_link_libraries(test_yolo ${LD_TRT_LIBS} ${LD_CUDA_LIBS} ${OpenCV_LIBS} ${EXTRA_LIBS})
     
 if(BUILD_TESTING)
     enable_testing()

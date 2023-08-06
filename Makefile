@@ -17,6 +17,6 @@
 	fi
 
 run:
-	bin/TrtServer
+	cd bin && ./test_yolo
 clean:
 	rm build -rf
